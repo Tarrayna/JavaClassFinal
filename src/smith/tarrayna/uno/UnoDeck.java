@@ -16,8 +16,9 @@ public class UnoDeck extends DeckofCards {
         super(GameType.UNO);
     }
 
+    //TODO: Fix this constrcutor
     public UnoDeck(GameType gameType) {
-        super();
+        super(gameType);
         deckOfCards = new Card[gameType.getNumerbOfCards()];
         createDeck(gameType);
         shuffle(gameType);
