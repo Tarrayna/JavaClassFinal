@@ -94,21 +94,5 @@ class GameHelper implements IGameHelper {
         }
     }
 
-    //Check For Royal Flush
-    private boolean isRoyalFlush(Player player)
-    {
-        boolean isFlush = false;
-        Card [] playersBestHand = new Card[5];
 
-        return isFlush;
-    }
-    //Check for Straight Flush
-    //Check for Four of a Kind
-    //Check for Full House
-    //Check for Flush
-    //Check for Straight
-    //Check for Three of a Kind
-    //Check for Two Pair
-    //Check for One Pair
-    //Check for High Card
 }

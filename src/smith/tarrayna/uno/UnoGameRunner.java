@@ -1,8 +1,6 @@
 package smith.tarrayna.uno;
 
-import smith.tarrayna.cards.CardArt;
-import smith.tarrayna.cards.CardTraits;
-import smith.tarrayna.cards.Color;
+import smith.tarrayna.cards.*;
 
 public class UnoGameRunner {
     public static void main(String[] args)
@@ -24,5 +22,19 @@ public class UnoGameRunner {
         System.out.println(CardArt.DRAW_TWO);
         System.out.println(CardArt.WILD);
         System.out.println(CardArt.WILD_DRAW_FOUR);
+
+        UnoCard card = new UnoCard(Suit.DIAMONDS, CardTraits.REVERSE, Color.GREEN);
+        UnoCard card1 = new UnoCard(Suit.DIAMONDS, CardTraits.REVERSE, Color.RED);
+        UnoCard card2 = new UnoCard(Suit.DIAMONDS, CardTraits.REVERSE, Color.YELLOW);
+        UnoCard card3 = new UnoCard(Suit.DIAMONDS, CardTraits.REVERSE, Color.BLUE);
+        System.out.println(card.getCard());
+        System.out.println(card1.getCard());
+        System.out.println(card2.getCard());
+        System.out.println(card3.getCard());
+
+
+        //Lets Shuffle a Deck and Then Print EVERY CARD
+        DeckofCards UnoDeck = new DeckofCards(GameType.UNO);
+
     }
 }
