@@ -1,13 +1,12 @@
 package smith.tarrayna.blackjack;
 
-public class Player {
-    //HandRank handRank = HandRank.HIGH_CARD;
-    boolean in = true;
-    int cash;
-    int playerNumber;
+import smith.tarrayna.cards.Card;
 
-    public Player(int startingCash, int playerNumber){
-        this.cash = startingCash;
-        this.playerNumber = playerNumber;
+public class Player {
+
+    Card [] playerHand;
+
+    public Player(){
+       
     }
 }

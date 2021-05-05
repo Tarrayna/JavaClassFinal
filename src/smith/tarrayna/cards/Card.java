@@ -1,21 +1,33 @@
 package smith.tarrayna.cards;
 
 public class Card {
-    protected CardTraits trait;
-    protected Suit suit;
-    protected Color color;
+    private CardValue cardValue;
+    private Suit suit;
 
     public Card()
     {
         this.suit = Suit.JOKER;
-        this.trait = CardTraits.WILD;
+        this.cardValue = CardValue.WILD;
     }
 
-    public Card(Suit suit, CardTraits trait, Color color)
+    public Card(Suit suit, CardValue cardValue)
     {
         this.suit = suit;
-        this.trait = trait;
-        this.color = color; 
+        this.cardValue = cardValue;
     }
 
+    public String getCard()
+    {
+        return (suit.getCardColor().getColorCode() + cardValue.getCardArt() + Color.CLEAR.getColorCode());
+    }
+
+    public Suit getSuit()
+    {
+        return suit;
+    }
+
+    public CardValue getCardValue()
+    {
+        return cardValue;
+    }
 }

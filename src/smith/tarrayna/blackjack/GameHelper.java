@@ -3,111 +3,25 @@ package smith.tarrayna.blackjack;
 import smith.tarrayna.cards.Card;
 import smith.tarrayna.cards.DeckofCards;
 import smith.tarrayna.cards.GameType;
-import smith.tarrayna.cards.IGameHelper;
 
-class GameHelper implements IGameHelper {
+class GameHelper {
     private DeckofCards deckofCards;
-    private Card[] communityHand;
-    private Card [][] playerCards;
-    private Player[] players;
-    private int numberOfPlayers;
+    private Card[] dealerHand;
+    private Card[] playerHand;
+    private int placeInDeck;
 
-    //Constructor for Game Helper
-    GameHelper(int numberOfPlayers, int startingCash)
-    {
-        startNewGame(numberOfPlayers,startingCash);
-    }
-
-    public void startNewGame(int numberOfPlayers, int startingCash)
+    public GameHelper()
     {
         //Get a new deck of cards
         deckofCards = new DeckofCards(GameType.BASIC);
-
-        //Update number of players
-        this.numberOfPlayers = numberOfPlayers;
-
-        //re deal the communnity hand
-        communityHand = dealCommunityHand();
-
-        //deal out the player hands
-        playerCards = new Card[2][numberOfPlayers];
-        dealPlayerCards();
-
-        //Set up player array. Keeps track of what they are doing
-        players = new Player[numberOfPlayers];
-
-        //Set up player array. Keeps track of what they are doing
-        players = generatePlayers(startingCash);
+        placeInDeck = 0;
     }
 
-    //Generates the array that will store player hands
-    public Card[][] generatePlayerHands (int numberOfPlayers)
-    {
-        return new Card[2][numberOfPlayers];
-    }
-
-    //Generates Players
-    public Player[] generatePlayers(int startingCash)
-    {
-        Player [] players = new Player[numberOfPlayers];
-        for(int i = 0; i < numberOfPlayers; i++)
-        {
-            players[i] = new Player(startingCash, i);
-        }
-
-        return players;
-    }
 
     //Deals the first 5 cards to the community hand
-    private Card[] dealCommunityHand()
+    public Card dealCard()
     {
-        //Create an array to store the community hand
-        Card [] communityHand = new Card[5];
-
-        //For each card take the corresponding card from the deck
-        for(int i = 0; i < 5; i++)
-        {
-            communityHand[0] = deckofCards.getCard(0);
-        }
-
-        return communityHand;
+        return deckofCards.getCard(placeInDeck++);
     }
 
-    public void dealPlayerCards()
-    {
-        //Place in deck counter. Start at 5 because community pot gets the first 5 (0-4)
-        int deckPlace = 5;
-
-        //Get the number of players
-        int numberOfPlayers = playerCards[0].length;
-
-        //Iterate through each player and give them 2 cards
-        for(int pCounter = 0; pCounter < numberOfPlayers; pCounter++ )
-        {
-            //Give each player 2 cards
-            for(int i = 0; i < 2; i++)
-            {
-                playerCards[i][pCounter] = deckofCards.getCard(deckPlace);
-                deckPlace++;
-            }
-        }
-    }
-
-    //Check For Royal Flush
-    private boolean isRoyalFlush(Player player)
-    {
-        boolean isFlush = false;
-        Card [] playersBestHand = new Card[5];
-
-        return isFlush;
-    }
-    //Check for Straight Flush
-    //Check for Four of a Kind
-    //Check for Full House
-    //Check for Flush
-    //Check for Straight
-    //Check for Three of a Kind
-    //Check for Two Pair
-    //Check for One Pair
-    //Check for High Card
 }

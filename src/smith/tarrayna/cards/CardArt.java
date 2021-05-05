@@ -83,6 +83,34 @@ public class CardArt {
                     " WW WWW WW             44\n" +
                     "  WW   WW              44\n"
     ).toString();
+    public static final String ACE = new StringBuilder(
+                    "  AAAAAAAAA\n" +
+                    "  AA     AA\n" +
+                    "  AAAAAAAAA\n" +
+                    "  AA     AA\n" +
+                    "  AA     AA\n"
+    ).toString();
+    public static final String JACK = new StringBuilder(
+                    "       JJ\n" +
+                    "       JJ\n" +
+                    "       JJ\n" +
+                    "  JJ   JJ \n" +
+                    "  JJJJJJJ\n"
+    ).toString();
+    public static final String KING = new StringBuilder(
+                    "  KK    KK\n" +
+                    "  KK  KK\n" +
+                    "  KKKKK\n" +
+                    "  KK  KK\n" +
+                    "  KK    KK\n"
+    ).toString();
+    public static final String QUEEN = new StringBuilder(
+                    "  AAAAAAAAA\n" +
+                    "  AA   A AA\n" +
+                    "  AA  A  AA\n" +
+                    "  AA A   AA\n" +
+                    "  AAAAAAAAAA\n"
+    ).toString();
     //TODO: Replace this with Jack, Queen, King and ACE
     public static final String NOT_COMPLTE = new StringBuilder(
             ""

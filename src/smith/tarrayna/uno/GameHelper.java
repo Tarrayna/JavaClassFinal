@@ -4,22 +4,21 @@ import smith.tarrayna.blackjack.Player;
 import smith.tarrayna.cards.Card;
 import smith.tarrayna.cards.DeckofCards;
 import smith.tarrayna.cards.GameType;
-import smith.tarrayna.cards.IGameHelper;
 
-class GameHelper implements IGameHelper {
+class GameHelper  {
     private DeckofCards deckofCards;
     private Card[] communityHand;
     private Card [][] playerCards;
-    private Player[] players;
+    Player player;
     private int numberOfPlayers;
 
     //Constructor for Game Helper
     GameHelper(int numberOfPlayers, int startingCash)
     {
-        startNewGame(numberOfPlayers,startingCash);
+        startNewGame();
     }
 
-    public void startNewGame(int numberOfPlayers, int startingCash)
+    public void startNewGame()
     {
         //Get a new deck of cards
         deckofCards = new DeckofCards(GameType.BASIC);
@@ -35,10 +34,8 @@ class GameHelper implements IGameHelper {
         dealPlayerCards();
 
         //Set up player array. Keeps track of what they are doing
-        players = new Player[numberOfPlayers];
+        player = new Player();
 
-        //Set up player array. Keeps track of what they are doing
-        players = generatePlayers(startingCash);
     }
 
     //Generates the array that will store player hands
@@ -47,17 +44,6 @@ class GameHelper implements IGameHelper {
         return new Card[2][numberOfPlayers];
     }
 
-    //Generates Players
-    public Player[] generatePlayers(int startingCash)
-    {
-        Player [] players = new Player[numberOfPlayers];
-        for(int i = 0; i < numberOfPlayers; i++)
-        {
-            players[i] = new Player(startingCash, i);
-        }
-
-        return players;
-    }
 
     //Deals the first 5 cards to the community hand
     public Card[] dealCommunityHand()

@@ -2,30 +2,22 @@ package smith.tarrayna.cards;
 
 public enum Suit
     {
-        SPADES("\u001B[44m", (char) 6, Color.BLUE), HEARTS("\u001B[41m", (char)3,Color.GREEN), CLUBS("\u001B[32m", (char)5, Color.RED), DIAMONDS("\u001B[43m", (char)4, Color.YELLOW), JOKER("color", (char) 6, Color.CLEAR);
-        private final String color;
-        private final char image;
+        YELLOW(Color.YELLOW, GameType.UNO),RED( Color.RED,GameType.UNO), GREEN(Color.GREEN,GameType.UNO),BLUE(Color.BLUE,GameType.UNO),SPADES(Color.BLACK,GameType.BASIC), HEARTS(Color.RED,GameType.BASIC), CLUBS(Color.BLACK,GameType.BASIC), DIAMONDS(Color.RED,GameType.BASIC), JOKER( Color.CLEAR,GameType.UNDEFINED);
         private final Color cardColor;
+        private final GameType gameType;
 
-         Suit(String color, char image, Color cardColor)
+         Suit(Color cardColor, GameType gameType)
         {
-            this.color = color;
-            this.image = image;
             this.cardColor = cardColor;
-        }
-
-        public String getColor()
-        {
-            return color;
-        }
-
-        public char getImage()
-        {
-            return image;
+            this.gameType = gameType;
         }
 
         public Color getCardColor()
         {
             return cardColor;
+        }
+        public GameType getGameType()
+        {
+            return gameType;
         }
 }

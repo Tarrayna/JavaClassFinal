@@ -2,8 +2,10 @@ package smith.tarrayna.uno;
 
 import smith.tarrayna.cards.*;
 
+import java.util.Scanner;
+
 public class UnoGameRunner {
-    public static void main(String[] args)
+    public void runGame(Scanner scanner)
     {
         //TODO: Remove this test code
         System.out.println(CardArt.ZERO);
@@ -23,10 +25,10 @@ public class UnoGameRunner {
         System.out.println(CardArt.WILD);
         System.out.println(CardArt.WILD_DRAW_FOUR);
 
-        UnoCard card = new UnoCard(Suit.DIAMONDS, CardTraits.REVERSE, Color.GREEN);
-        UnoCard card1 = new UnoCard(Suit.DIAMONDS, CardTraits.REVERSE, Color.RED);
-        UnoCard card2 = new UnoCard(Suit.DIAMONDS, CardTraits.REVERSE, Color.YELLOW);
-        UnoCard card3 = new UnoCard(Suit.DIAMONDS, CardTraits.REVERSE, Color.BLUE);
+        Card card = new Card(Suit.DIAMONDS, CardValue.REVERSE);
+        Card card1 = new Card(Suit.DIAMONDS, CardValue.REVERSE);
+        Card card2 = new Card(Suit.DIAMONDS, CardValue.REVERSE);
+        Card card3 = new Card(Suit.DIAMONDS, CardValue.REVERSE);
         System.out.println(card.getCard());
         System.out.println(card1.getCard());
         System.out.println(card2.getCard());
