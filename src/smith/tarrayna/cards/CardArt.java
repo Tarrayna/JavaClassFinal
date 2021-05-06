@@ -1,16 +1,6 @@
 package smith.tarrayna.cards;
 
 public class CardArt {
-    public static final String ZERO = new StringBuilder("000000\n" +
-            "00  00\n" +
-            "00  00\n" +
-            "00  00\n" +
-            "000000\n").toString();
-    public static final String ONE = new StringBuilder("1111\n" +
-            "  11\n" +
-            "  11\n" +
-            "  11\n" +
-            "111111\n").toString();
     public static final String TWO = new StringBuilder("222222\n" +
             "     2\n" +
             "222222\n" +
@@ -56,64 +46,34 @@ public class CardArt {
             "  11    00  00\n" +
             "  11    00  00\n" +
             "111111  000000\n").toString();
-    public static final String DRAW_TWO = new StringBuilder("DDDDDD     222222\n" +
-            "DD   DD         2\n" +
-            "DD    DD   222222\n" +
-            "DD   DD    2\n" +
-            "DDDDD      222222\n").toString();
-    public static final String SKIP = new StringBuilder(" SSSSSS\n" +
-            "SS\n" +
-            " SSSS \n" +
-            "    SS\n" +
-            "SSSSSS \n").toString();
-    public static final String REVERSE = new StringBuilder("RRRRRRR \n" +
-            "RR    RR\n" +
-            "RRRRRR\n" +
-            "RR   RR\n" +
-            "RR    RR\n").toString();
-    public static final String WILD = new StringBuilder("WW       WW\n" +
-            "WW       WW\n" +
-            "WW   W   WW\n" +
-            " WW WWW WW\n" +
-            "  WW   WW\n").toString();
-    public static final String WILD_DRAW_FOUR = new StringBuilder(
-                    "WW       WW      44    44\n" +
-                    "WW       WW      44    44 \n" +
-                    "WW   W   WW      44444444\n" +
-                    " WW WWW WW             44\n" +
-                    "  WW   WW              44\n"
-    ).toString();
+
     public static final String ACE = new StringBuilder(
-                    "  AAAAAAAAA\n" +
-                    "  AA     AA\n" +
-                    "  AAAAAAAAA\n" +
-                    "  AA     AA\n" +
-                    "  AA     AA\n"
+                    "AAAAAAAAA\n" +
+                    "AA     AA\n" +
+                    "AAAAAAAAA\n" +
+                    "AA     AA\n" +
+                    "AA     AA\n"
     ).toString();
     public static final String JACK = new StringBuilder(
-                    "       JJ\n" +
-                    "       JJ\n" +
-                    "       JJ\n" +
-                    "  JJ   JJ \n" +
-                    "  JJJJJJJ\n"
+                    "     JJ\n" +
+                    "     JJ\n" +
+                    "     JJ\n" +
+                    "JJ   JJ \n" +
+                    "JJJJJJJ\n"
     ).toString();
     public static final String KING = new StringBuilder(
-                    "  KK    KK\n" +
-                    "  KK  KK\n" +
-                    "  KKKKK\n" +
-                    "  KK  KK\n" +
-                    "  KK    KK\n"
+                    "KK    KK\n" +
+                    "KK  KK\n" +
+                    "KKKKK\n" +
+                    "KK  KK\n" +
+                    "KK    KK\n"
     ).toString();
     public static final String QUEEN = new StringBuilder(
-                    "  AAAAAAAAA\n" +
-                    "  AA   A AA\n" +
-                    "  AA  A  AA\n" +
-                    "  AA A   AA\n" +
-                    "  AAAAAAAAAA\n"
-    ).toString();
-    //TODO: Replace this with Jack, Queen, King and ACE
-    public static final String NOT_COMPLTE = new StringBuilder(
-            ""
+                    "AAAAAAAAA\n" +
+                    "AA   A AA\n" +
+                    "AA  A  AA\n" +
+                    "AA A   AA\n" +
+                    "AAAAAAAAAA\n"
     ).toString();
 
     //We don't need to make this. The vaiables are all static. This could be enum. But I don't wanna

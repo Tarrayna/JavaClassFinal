@@ -5,39 +5,30 @@ import java.util.Random;
 
 //This should really be an interface. But whateves
 public class DeckofCards {
+    private final int DECK_SIZE = 52;
     private Card[] deckOfCards;
     private Random random = new Random();
 
     //Consider making this abstract. And implementing the deck building based on a class that inherits from this
     //in other words override the create Deck and then keep everything else the sameJ
-    public DeckofCards(GameType gameType) {
-        deckOfCards = new Card[gameType.getNumberOfCards()];
-        createDeck(gameType);
+    public DeckofCards() {
+        deckOfCards = new Card[DECK_SIZE];
+        createDeck();
         shuffle();
     }
 
     //Creates the Deck to be used in the game
-    private void createDeck(GameType gameType) {
+    private void createDeck() {
        //Go through each card value
         int placeInDeck = 0;
 
         for(CardValue cardValue : CardValue.values())
         {
-            //Check to see if card type is part of game
-            if(gameType != cardValue.getGameType() && cardValue.getGameType() != GameType.ANY)
-            {
-                continue;
-            }
             //Get each color
             for(Suit suit : Suit.values())
             {
-                //Make sure suit is part of game
-                if(gameType == suit.getGameType() || suit.getGameType() == GameType.ANY)
-                {
                     deckOfCards[placeInDeck] = new Card(suit,cardValue);
                     placeInDeck++;
-                }
-
             }
         }
 
