@@ -6,8 +6,8 @@ public class Card {
 
     public Card()
     {
-        this.suit = Suit.JOKER;
-        this.cardValue = CardValue.WILD;
+        this.suit = Suit.SPADES;
+        this.cardValue = CardValue.ACE;
     }
 
     public Card(Suit suit, CardValue cardValue)

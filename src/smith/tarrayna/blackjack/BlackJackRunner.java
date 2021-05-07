@@ -12,43 +12,33 @@ import smith.tarrayna.cards.Suit;
 import java.util.Scanner;
 
 public class BlackJackRunner {
-    GameHelper gameHelper;
-    Double playerBuyIn;
 
-    public void runGame(Scanner scanner, Double buyIn)  {
-        //Max possible hand in 14 cards
-        Player player = new Player(false, buyIn);
-        Player dealer = new Player(true);
+    public void runGame(Scanner scanner,GameHelper gameHelper)  {
 
-        GameHelper gameHelper = new GameHelper(buyIn);
         System.out.println("Let's Play Black Jack!!");
+        gameHelper.setCurrentBet();
 
-        int playerValue = gameHelper.playerTurn(player,scanner);
-        int dealerValue = gameHelper.dealerTurn(dealer);
+        //Deal starting hand
+        gameHelper.playerTurn(scanner);
+        gameHelper.dealerTurn();
 
-        switch(gameHelper.determineWinner(playerValue, dealerValue))
-        {
-            case 1:
-                if(playerValue == 21)
-                {
-                    System.out.print("Nice Blackjack! ");
-                }
+        handCompleteRunner(gameHelper);
 
-                System.out.println("You win!!");
-                break;
-            case -1:
-                System.out.println("Dealer Wins. Nice try!");
-                break;
-            case 0:
-                System.out.println("The Game is a Tie!");
-                break;
-        }
 
     }
-
-    public void dealStartingHand()
+    public void handCompleteRunner(GameHelper gameHelper)
     {
+        System.out.println("Player Main Hand Results");
+        gameHelper.determineWinner(gameHelper.getPlayer(), gameHelper.getDealer(), Hand.HAND_ONE);
 
+        if(gameHelper.getPlayer().isSplit())
+        {
+            System.out.println("Player Split Hand Results");
+            gameHelper.determineWinner(gameHelper.getPlayer(), gameHelper.getDealer(), Hand.HAND_TWO);
+
+        }
     }
+
+
 
 }

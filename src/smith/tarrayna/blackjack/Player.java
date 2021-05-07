@@ -6,7 +6,7 @@ import smith.tarrayna.cards.CardValue;
 import java.security.InvalidParameterException;
 
 public class Player {
-    private double cashOnHand;
+    private int cashOnHand;
     private Card [][] playerHand;
     private int points;
     private int numberCardsInHandOne ;
@@ -18,26 +18,42 @@ public class Player {
     private boolean isDealer;
 
     private final int NUMBER_OF_CARDS = 14;
+    private final int NUMBER_OF_HANDS = 2;
     private final int USING_HAND_ONE = 0;
     private final int USING_HAND_TWO = 1;
 
     public Player(boolean isDealer){
-        if(isDealer == false) throw new IllegalArgumentException("This Constuctor Can Only be Used For Creating a Dealer");
-        cashOnHand = 1000000.00;
+        if(!isDealer) throw new IllegalArgumentException("This Constuctor Can Only be Used For Creating a Dealer");
+        cashOnHand =  Integer.MAX_VALUE;
         this.isDealer = isDealer;
        resetPlayer();
     }
 
-    public Player(boolean isDealer, double startingCash){
-        if(isDealer == true) throw new IllegalArgumentException("This Constuctor Can Only be Used For Creating a Player");
+    public Player(boolean isDealer, int startingCash){
+        if(isDealer) throw new IllegalArgumentException("This Constuctor Can Only be Used For Creating a Player");
         this.isDealer = isDealer;
         this.cashOnHand = startingCash;
         resetPlayer();
     }
 
+    public int getCashOnHand()
+    {
+        return cashOnHand;
+    }
+
+    public void setStartCash(int cash)
+    {
+        cashOnHand = cash;
+    }
+
+    public void fullFillBet(int bet)
+    {
+        cashOnHand += bet;
+    }
+
     public void resetPlayer()
     {
-        playerHand = new Card[NUMBER_OF_CARDS][NUMBER_OF_CARDS];
+        playerHand = new Card[NUMBER_OF_HANDS][NUMBER_OF_CARDS];
         points = 0;
         numberCardsInHandOne = 0;
         numberCardsInHandTwo = 0;
@@ -49,7 +65,7 @@ public class Player {
 
     public Card[] getHand(Hand handNumber)
     {
-        Card [] hand = new Card [playerHand.length];
+        Card [] hand = new Card [playerHand[0].length];
 
         switch(handNumber)
          {
@@ -103,13 +119,15 @@ public class Player {
         int aceCounter = 0;
 
         //Add up non ace cards. Keep track of aces
-        for(int i = 0; i < playerHand.length; i++)
+        for(int i = 0; i < playerHand[0].length; i++)
         {
-
+            //Hand is nothing. Do nothing. Points is 0
             if(playerHand[handNumber.getValue()][i] == null)
             {
                 continue;
             }
+
+            //Wait until the end to count Aces
             if(playerHand[handNumber.getValue()][i].getCardValue() == CardValue.ACE)
             {
                 aceCounter++;
@@ -162,7 +180,11 @@ public class Player {
 
     public boolean canSplit()
     {
-        if(playerHand[0][0].getCardValue().getCardValue() == playerHand[0][1].getCardValue().getCardValue())
+        //Check that there are cards there
+        if(playerHand[0][0] == null || playerHand[1][0] == null)
+            return false;
+
+        if(playerHand[0][0].getCardValue().getCardValue() == playerHand[1][0].getCardValue().getCardValue())
             return true;
         return false;
     }

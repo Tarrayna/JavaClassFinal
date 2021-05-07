@@ -2,9 +2,9 @@ package smith.tarrayna.cards;
 
 public enum Suit
     {
-        PADES(Color.BLACK), HEARTS(Color.RED), CLUBS(Color.BLACK), DIAMONDS(Color.RED), JOKER( Color.CLEAR);
+        SPADES(Color.BLACK), HEARTS(Color.RED), CLUBS(Color.BLACK), DIAMONDS(Color.RED);
         private final Color cardColor;
-        
+
          Suit(Color cardColor)
         {
             this.cardColor = cardColor;
