@@ -18,12 +18,14 @@ public class BlackJackRunner {
         System.out.println("Let's Play Black Jack!!");
         gameHelper.setCurrentBet();
 
-        //Deal starting hand
+        playerBorder();
         gameHelper.playerTurn(scanner);
+
+        dealerBorder();
         gameHelper.dealerTurn();
 
         handCompleteRunner(gameHelper);
-
+        endGameBorder();
 
     }
     public void handCompleteRunner(GameHelper gameHelper)
@@ -37,6 +39,23 @@ public class BlackJackRunner {
             gameHelper.determineWinner(gameHelper.getPlayer(), gameHelper.getDealer(), Hand.HAND_TWO);
 
         }
+    }
+
+    //These are intentionally left in. For quickly searching in terminal
+    public void endGameBorder()
+    {
+        System.out.printf("************************************************\n" +
+                          "************************************************\n");
+    }
+    public void playerBorder(){
+        System.out.printf("pppppppppppppppppppppppppppppppppppppppppp\n" +
+                          "pppppppppppppppppppppppppppppppppppppppppp\n");
+    }
+
+    public void dealerBorder()
+    {
+        System.out.printf("ddddddddddddddddddddddddddddddddddddddd\n" +
+                          "ddddddddddddddddddddddddddddddddddddddd\n");
     }
 
 

@@ -2,6 +2,7 @@ package smith.tarrayna.blackjack;
 
 import smith.tarrayna.cards.Card;
 import smith.tarrayna.cards.CardValue;
+import smith.tarrayna.cards.Suit;
 
 import java.security.InvalidParameterException;
 
@@ -21,6 +22,8 @@ public class Player {
     private final int NUMBER_OF_HANDS = 2;
     private final int USING_HAND_ONE = 0;
     private final int USING_HAND_TWO = 1;
+    private final int CARD_ONE = 0;
+    private final int CARD_TWO = 1;
 
     public Player(boolean isDealer){
         if(!isDealer) throw new IllegalArgumentException("This Constuctor Can Only be Used For Creating a Dealer");
@@ -48,6 +51,7 @@ public class Player {
 
     public void fullFillBet(int bet)
     {
+
         cashOnHand += bet;
     }
 
@@ -88,29 +92,14 @@ public class Player {
          return hand;
     }
 
-    public int getNumberCardsInHandOne()
-    {
-        return numberCardsInHandOne;
-    }
-    public int getNumberCardsInHandTwo()
-    {
-        return numberCardsInHandTwo;
-    }
-
-    public int getNumberOfPoints()
-    {
-        return points;
-    }
-
-    public boolean canKeepPlaying()
+    public boolean canKeepPlaying(Hand handNumber)
     {
         //Check to see if player is using 2 hands
-        if(isSplit)
+        if(calculateHandValue(handNumber) >= GameHelper.BLACKJACK)
         {
-            return (calculateHandValue(Hand.HAND_ONE) <= 21 && calculateHandValue(Hand.HAND_TWO) <= 21);
+            return false;
         }
-
-        return (calculateHandValue(Hand.HAND_ONE) <= 21);
+        return true;
     }
 
     public int calculateHandValue(Hand handNumber)
@@ -138,15 +127,16 @@ public class Player {
         }
 
         //Add in Aces. 2 Aces cannot = 11. So if more than 1 ace. Only verify value of last Ace
+        int highAce = 11;
         for(int i = 0; i < aceCounter; i++)
         {
             //Only check last ace for 11
             if(i == aceCounter -1)
             {
                 //Check to see if an 11 will take you over. And since last card. Return
-                if(value + 11 < 21)
+                if(value + highAce <= GameHelper.BLACKJACK)
                 {
-                    return value+ 11;
+                    return value+ highAce;
                 }
             }
 
@@ -157,10 +147,6 @@ public class Player {
         return value;
     }
 
-    public void setDoubleDown()
-    {
-        doubleDown = true;
-    }
     public boolean isDealer()
     {
         return isDealer;
@@ -170,34 +156,34 @@ public class Player {
         return isSplit;
     }
 
-    public boolean canPlayerPlaySecondHand()
+
+    public boolean canSplit(int currentBet)
     {
-        if(!isSplit() || calculateHandValue(Hand.HAND_TWO) > 21)
+        if(getCashOnHand() < (currentBet * 2))
+        {
             return false;
-
-        return true;
-    }
-
-    public boolean canSplit()
-    {
-        //Check that there are cards there
-        if(playerHand[0][0] == null || playerHand[1][0] == null)
+        }
+        try
+        {
+            if(playerHand[USING_HAND_ONE][CARD_ONE].getCardValue()== playerHand[USING_HAND_ONE][CARD_TWO].getCardValue())
+                return true;
+        }catch(IndexOutOfBoundsException e)
+        {
             return false;
+        }
 
-        if(playerHand[0][0].getCardValue().getCardValue() == playerHand[1][0].getCardValue().getCardValue())
-            return true;
         return false;
     }
 
     public void split()
     {
-        if(canSplit())
-        {
-            Card temp = playerHand[0][1];
-            playerHand[0][1] = null;
-            playerHand[1][0]  = temp;
+
+            Card temp = playerHand[USING_HAND_ONE][CARD_TWO];
+            playerHand[USING_HAND_ONE][CARD_TWO] = null;
+            playerHand[USING_HAND_TWO][CARD_ONE]  = temp;
             isSplit = true;
-        }
+            numberCardsInHandOne = 1;
+            numberCardsInHandTwo = 1;
     }
 
     public void getCard(Hand handNumber, Card card)
@@ -210,10 +196,17 @@ public class Player {
     {
         if(handNumber == Hand.HAND_TWO)
         {
-            return  (isSplit() == false || calculateHandValue(handNumber) > 21)? false : true;
+            return  (isSplit() == false || calculateHandValue(handNumber) > GameHelper.BLACKJACK)? false : true;
         }
 
-        return  (calculateHandValue(handNumber) > 21)? false : true;
+        return  (calculateHandValue(handNumber) > GameHelper.BLACKJACK)? false : true;
+    }
+
+    //TODO: Delete test code
+    public void testPlayer()
+    {
+        playerHand[0][0] = new Card(Suit.HEARTS, CardValue.ACE);
+        playerHand[0][1] = new Card(Suit.SPADES, CardValue.ACE);
     }
 }
 
