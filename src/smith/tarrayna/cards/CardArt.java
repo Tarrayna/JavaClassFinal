@@ -1,5 +1,11 @@
 package smith.tarrayna.cards;
-
+/**
+ * CardArt. Used when printing out a card.
+ *
+ * @author Tarrayna Smith
+ * Final Project
+ * Requirement 8 There must be a static variable used somewhere. (10 points)
+ */
 public class CardArt {
     public static final String TWO = new StringBuilder("222222\n" +
             "     2\n" +
@@ -76,9 +82,5 @@ public class CardArt {
                     "AAAAAAAAAA\n"
     ).toString();
 
-    //We don't need to make this. The vaiables are all static. This could be enum. But I don't wanna
     private CardArt() {};
-
-
-
 }

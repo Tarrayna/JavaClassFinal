@@ -2,8 +2,12 @@
 package smith.tarrayna.cards;
 
 import java.util.Random;
-
-//This should really be an interface. But whateves
+/**
+ * DeckofCards. Deck of cards in which the game will be played from.
+ *
+ * @author Tarrayna Smith
+ * Final Project
+ */
 public class DeckofCards {
     private final int DECK_SIZE = 52;
     private Card[] deckOfCards;
@@ -19,16 +23,16 @@ public class DeckofCards {
 
     //Creates the Deck to be used in the game
     private void createDeck() {
-       //Go through each card value
+        //Go through each card value
         int placeInDeck = 0;
 
-        for(CardValue cardValue : CardValue.values())
-        {
+        //2. For, while, do/while, and enhanced for loops should be used to keep the project running until the user wishes to end.
+        // At least 3 of the loops mentioned should be used. (15 points) 2 of 3
+        for (CardValue cardValue : CardValue.values()) {
             //Get each color
-            for(Suit suit : Suit.values())
-            {
-                    deckOfCards[placeInDeck] = new Card(suit,cardValue);
-                    placeInDeck++;
+            for (Suit suit : Suit.values()) {
+                deckOfCards[placeInDeck] = new Card(suit, cardValue);
+                placeInDeck++;
             }
         }
 
@@ -37,14 +41,18 @@ public class DeckofCards {
 
     //Shuffle Deck 1000x
     public void shuffle() {
+        int maxCount = 1000;
         int count = 0;
         int swapOne;
         int swapTwo;
+        int decrement = -1;
 
+        //2. For, while, do/while, and enhanced for loops should be used to keep the project running until the user wishes to end.
+        // At least 3 of the loops mentioned should be used. (15 points) 3 of 3
         do {
             //Figure out which cards to swap
-            swapOne = random.nextInt(getSizeOfDeck() - 1);
-            swapTwo = random.nextInt(getSizeOfDeck() -1);
+            swapOne = random.nextInt(getSizeOfDeck() + decrement);
+            swapTwo = random.nextInt(getSizeOfDeck() + decrement);
 
             //Hold card temp
             Card holder = deckOfCards[swapOne];
@@ -54,7 +62,7 @@ public class DeckofCards {
             deckOfCards[swapTwo] = holder;
 
             count++;
-        } while (count < 1000);
+        } while (count < maxCount);
     }
 
     public Card getCard(int placeInDeck) {
