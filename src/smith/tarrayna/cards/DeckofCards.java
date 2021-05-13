@@ -26,8 +26,8 @@ public class DeckofCards {
      * Creates deck that will be used in game.
      *
      * @return void
-     * Project Requirement 2 For, while, do/while, and enhanced for loops should be used to keep the project running until the user wishes to end.
-     * At least 3 of the loops mentioned should be used. (15 points) 2 of 3
+     * Requirement 2 For, while, do/while, and enhanced for loops should be used to keep the project running until the user wishes to end.
+     * At least 3 of the loops mentioned should be used. (15 points) 1 of 3
      */
     private void createDeck() {
         //Go through each card value
@@ -49,8 +49,8 @@ public class DeckofCards {
      *Shuffles a deck 1000x
      *
      * @return void
-     * Project Requirement 2 For, while, do/while, and enhanced for loops should be used to keep the project running until the user wishes to end.
-     * At least 3 of the loops mentioned should be used. (15 points) 3 of 3
+     * Requirement 2 For, while, do/while, and enhanced for loops should be used to keep the project running until the user wishes to end.
+     * At least 3 of the loops mentioned should be used. (15 points) 2 of 3
      */
     public void shuffle() {
         int maxCount = 1000;

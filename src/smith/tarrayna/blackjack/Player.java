@@ -143,6 +143,11 @@ public class Player {
      * @param handNumber hand to be returned
      *
      * @return the chosen hand
+     * Requirement 2 For, while, do/while, and enhanced for loops should be used to keep the project running until the user wishes to end.
+     * At least 3 of the loops mentioned should be used. (15 points) 3 of 3
+     * 
+     * Requirement 6 Arrays: You need to use at least a single dimensional array and a multi
+     * dimensional array somewhere in the application. There must also be an array that stores a collection of one of the classes you create. (15 points)
      */
     public Card[] getHand(Hand handNumber) {
         int zero = 0;
