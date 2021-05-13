@@ -13,21 +13,27 @@ public class DeckofCards {
     private Card[] deckOfCards;
     private Random random = new Random();
 
-    //Consider making this abstract. And implementing the deck building based on a class that inherits from this
-    //in other words override the create Deck and then keep everything else the sameJ
+    /**
+     * Constructor
+     */
     public DeckofCards() {
         deckOfCards = new Card[DECK_SIZE];
         createDeck();
         shuffle();
     }
 
-    //Creates the Deck to be used in the game
+    /**
+     * Creates deck that will be used in game.
+     *
+     * @return void
+     * Project Requirement 2 For, while, do/while, and enhanced for loops should be used to keep the project running until the user wishes to end.
+     * At least 3 of the loops mentioned should be used. (15 points) 2 of 3
+     */
     private void createDeck() {
         //Go through each card value
         int placeInDeck = 0;
 
-        //2. For, while, do/while, and enhanced for loops should be used to keep the project running until the user wishes to end.
-        // At least 3 of the loops mentioned should be used. (15 points) 2 of 3
+        //Add each value of card for each suit to deck
         for (CardValue cardValue : CardValue.values()) {
             //Get each color
             for (Suit suit : Suit.values()) {
@@ -39,7 +45,13 @@ public class DeckofCards {
 
     }
 
-    //Shuffle Deck 1000x
+    /**
+     *Shuffles a deck 1000x
+     *
+     * @return void
+     * Project Requirement 2 For, while, do/while, and enhanced for loops should be used to keep the project running until the user wishes to end.
+     * At least 3 of the loops mentioned should be used. (15 points) 3 of 3
+     */
     public void shuffle() {
         int maxCount = 1000;
         int count = 0;
@@ -47,8 +59,7 @@ public class DeckofCards {
         int swapTwo;
         int decrement = -1;
 
-        //2. For, while, do/while, and enhanced for loops should be used to keep the project running until the user wishes to end.
-        // At least 3 of the loops mentioned should be used. (15 points) 3 of 3
+
         do {
             //Figure out which cards to swap
             swapOne = random.nextInt(getSizeOfDeck() + decrement);
@@ -65,19 +76,22 @@ public class DeckofCards {
         } while (count < maxCount);
     }
 
+    /**
+     * Returns card in position indicated
+     *
+     * @param placeInDeck where in deck to grab card to return
+     *
+     * @return card in that place in deck
+     */
     public Card getCard(int placeInDeck) {
         return deckOfCards[placeInDeck];
     }
 
-    public Card[] getDeck() {
-        return deckOfCards;
-    }
-
-    public void printDeck(){
-        for(Card card: deckOfCards)
-        {
-        }
-    }
+    /**
+     * Gets the size of the deck
+     *
+     * @return size of the deck
+     */
     public int getSizeOfDeck(){
         return deckOfCards.length;
     }
